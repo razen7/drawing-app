@@ -12,9 +12,9 @@ socket.on('new-drawing', (data) => {
 addEventListener('load', () => {
   socket.on('history', (history) => {
     for (const data of history) {
-      stroke('200', '0', '200');
-      strokeWeight(4);
-      line(data.prevX, data.prevY, data.currX, data.currY);
+      noStroke()
+      fill(200, 0, 200);
+      ellipse(data.mouseX, data.mouseY, 50, 50);
     }
   })
 });
@@ -37,19 +37,15 @@ function setup() {
   createCanvas(400, 400);
   background(220);
 }
-let prevX, prevY;
+let prevX,prevY;
 function mousePressed() {
-  prevX = mouseX;
-  prevY = mouseY;
+  prevX=mouseX;
+  prevY=mouseY;
 }
 
 function mouseDragged() {
-  currX = mouseX;
-  currY = mouseY;
-  stroke('255', '255', '255');
-  strokeWeight(4);
-  line(prevX, prevY, currX, currY);
-  socket.emit('drawing', { prevX, prevY, currX, currY, color: "255, 255, 255" });
-  prevX = currX;
-  prevY = currY;
+  socket.emit('drawing', { mouseX, mouseY });
+  noStroke()
+  fill(255, 255, 255);
+  ellipse(mouseX, mouseY, 50, 50);
 }
