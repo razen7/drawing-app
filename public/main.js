@@ -1,4 +1,4 @@
-const socket = io.connect('http://localhost:8000/');
+const socket = io.connect(location.origin);
 
 const inputEl = document.getElementById('message');
 socket.on('new-message', (data) => console.log(data));
