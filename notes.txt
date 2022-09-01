@@ -1,0 +1,4 @@
+ADDING TO REMOTE ORIGIN
+git remote add origin2 https://github.com/razen7/drawing-app.git
+>> git branch -M main
+>> git push -u origin2 main
