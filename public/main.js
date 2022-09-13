@@ -1,12 +1,12 @@
-const socket = io.connect(location.origin);
+const socket = io.connect(location.origin); // gets url of browser
 
 const inputEl = document.getElementById('message');
 socket.on('new-message', (data) => console.log(data));
 
 socket.on('new-drawing', (data) => {
-  noStroke()
-  fill(200, 0, 200);
-  ellipse(data.mouseX, data.mouseY, 50, 50);
+  stroke('200', '0', '200');
+  strokeWeight(4);
+  line(data.prevX, data.prevY, data.currX, data.currY);
 });
 
 addEventListener('load', () => {

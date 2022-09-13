@@ -29,9 +29,9 @@ io.on("connection", (socket) => {
 
     socket.on('drawing', (data) => {
         history.push(data);
-        console.log(history);
+        // console.log(history);
         socket.broadcast.emit('new-drawing', data);
-    })
+    });
 
     socket.on('disconnect', () => console.log('Client disconnected'));
 });
